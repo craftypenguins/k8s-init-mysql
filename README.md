@@ -14,17 +14,15 @@ CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 ### Prerequisites
 
-		"github.com/go-sql-driver/mysql"
-    "github.com/namsral/flag"
-
 ```
-		go get github.com/go-sql-driver/mysql
-    go get github.com/namsral/flag
+go get github.com/go-sql-driver/mysql
+go get github.com/namsral/flag
 ```
 
 ## Usage ##
 
 ### Command line arguments ###
+```
 Usage of /k8s-init-mysql:
   -dbhost string
     	Host IP or DNS connect to - TCP Only now (Required)
@@ -36,6 +34,7 @@ Usage of /k8s-init-mysql:
     	SQL to test ("select 1;") (default "select 1;")
   -dbuser string
     	User to connect as (Required)
+```
 
 ### Environment Variables ###
 
