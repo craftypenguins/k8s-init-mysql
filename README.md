@@ -1,7 +1,7 @@
 # Kubernetes Init Container Helper - MySQL Probe
 
-This is a simple GO application that can be staticlly compiled and build into
-a Stratch docker container and used as a K8S init contianer to check that 
+This is a simple GO application that can be statically compiled and build into
+a Scratch docker container and used as a K8S init container to check that
 a MySQL service is alive and usable with provided credentials and optionally
 running a SQL Query that will result in a non-empty response
 
@@ -9,7 +9,7 @@ running a SQL Query that will result in a non-empty response
 
 Clone down and run 
 ```
-CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o k8s-init-mysql .
 ```
 
 ### Prerequisites
