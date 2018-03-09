@@ -4,6 +4,7 @@ import (
 		"github.com/go-sql-driver/mysql"
 		"database/sql"
     "fmt"
+    "time"
     "github.com/namsral/flag"
 )
 
@@ -13,6 +14,7 @@ func main() {
   passPtr := flag.String("dbpassword", "", "Password to connect with (Required)")
   addrPtr := flag.String("dbhost", "", "Host IP or DNS connect to - TCP Only now (Required)")
   dbPtr := flag.String("dbname", "", "Database name (Required)")
+  timeoutPtr := flag.String("timeout", "", "Database TCP timeout (OS default)")
   sqlPtr := flag.String("dbsql", "select 1;", "SQL to test (\"select 1;\")")
   flag.Parse()
 
@@ -22,6 +24,12 @@ func main() {
   config.Net = "tcp"
   config.Addr = *addrPtr
   config.DBName = *dbPtr
+
+  if *timeoutPtr != "" {
+    parsedTimeout, err := time.ParseDuration(*timeoutPtr)
+    config.Timeout = parsedTimeout
+    checkErr(err)
+  }
 
   dsn := config.FormatDSN()
   fmt.Println(dsn)
